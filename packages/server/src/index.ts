@@ -14,6 +14,6 @@ const httpServer = createServer((_req, res) => {
 
 new CatanServer(httpServer);
 
-httpServer.listen(PORT, () => {
+httpServer.listen(PORT, "0.0.0.0", () => {
   console.log(`Catan server listening on port ${PORT}`);
 });
