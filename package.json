@@ -1,0 +1,20 @@
+{
+  "name": "catan",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "pnpm -r build",
+    "build:shared": "pnpm --filter @catan/shared build",
+    "build:server": "pnpm --filter @catan/server build",
+    "build:client": "pnpm --filter @catan/client build",
+    "dev:server": "pnpm --filter @catan/server dev",
+    "dev:client": "pnpm --filter @catan/client dev",
+    "dev": "pnpm dev:server & pnpm dev:client",
+    "test": "pnpm --filter @catan/shared test",
+    "test:watch": "pnpm --filter @catan/shared test:watch",
+    "lint": "pnpm -r lint"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}
