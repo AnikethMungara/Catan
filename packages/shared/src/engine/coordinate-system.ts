@@ -442,13 +442,14 @@ export function hexToPixel(hex: CubeCoord, size: number): { x: number; y: number
 export function vertexToPixel(v: VertexCoord, size: number): { x: number; y: number } {
   const canon = canonicalizeVertex(v);
   const hexCenter = hexToPixel({ q: canon.q, r: canon.r, s: canon.s }, size);
+  const sqrt3_2 = Math.sqrt(3) / 2;
 
   if (canon.dir === "N") {
-    // Top vertex: straight up from hex center
-    return { x: hexCenter.x, y: hexCenter.y - size };
+    // N vertex sits between NW and NE edges → 300° position (top-right of flat-top hex)
+    return { x: hexCenter.x + size / 2, y: hexCenter.y - size * sqrt3_2 };
   } else {
-    // Bottom vertex: straight down from hex center
-    return { x: hexCenter.x, y: hexCenter.y + size };
+    // S vertex sits between SE and SW edges → 120° position (bottom-left of flat-top hex)
+    return { x: hexCenter.x - size / 2, y: hexCenter.y + size * sqrt3_2 };
   }
 }
 
